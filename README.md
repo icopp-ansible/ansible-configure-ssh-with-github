@@ -12,12 +12,6 @@ Generate a local SSH key if necessary, add it to your Github account, and add yo
   - hosts: all
     roles:
       - role: icopp.configure-ssh-with-github
-```
-
-```
-  - hosts: all
-    roles:
-      - role: icopp.configure-ssh-with-github
         github_username: xxxxx
         github_api_token: xxxxx
 ```
