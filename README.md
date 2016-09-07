@@ -4,7 +4,7 @@ Generate a local SSH key if necessary, add it to your Github account, and add yo
 
 ## Role Variables
 
-`github_username` and `github_api_token` must be supplied or all tasks will be skipped over.
+`github_username` and `github_api_token` must be supplied or all tasks will be skipped.
 
 ## Example Playbook
 
