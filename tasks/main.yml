@@ -2,21 +2,13 @@
 - name: Install ansible-uri prereqs
   pip:
     name: httplib2
+  when: github_username != "" and github_api_token != ""
 
 - name: Generate SSH key if necessary
   user:
     name: "{{ ansible_user_id }}"
     generate_ssh_key: yes
-
-- vars_prompt:
-    - name: github_username
-      prompt: Enter a Github username
-      when: github_username == ""
-
-    - name: github_api_token
-      prompt: Enter a new Github API token that can modify SSH keys
-      private: true
-      when: github_api_token == ""
+  when: github_username != "" and github_api_token != ""
 
 - name: Add SSH key to Github
   uri:
@@ -27,8 +19,10 @@
       key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
     body_format: json
     status_code: 201
+  when: github_username != "" and github_api_token != ""
 
 - name: Authorize SSH keys from Github
   authorized_key:
     key: https://github.com/{{ github_username }}.keys
     user: "{{ ansible_user_id }}"
+  when: github_username != "" and github_api_token != ""
