@@ -4,12 +4,6 @@
     name: httplib2
   when: github_username != "" and github_api_token != ""
 
-- name: Generate SSH key if necessary
-  user:
-    name: "{{ ansible_user_id }}"
-    generate_ssh_key: yes
-  when: github_username != "" and github_api_token != ""
-
 - name: Add SSH key to Github
   uri:
     url: https://api.github.com/user/keys?access_token={{ github_api_token }}

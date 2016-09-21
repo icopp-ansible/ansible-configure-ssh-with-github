@@ -1,6 +1,6 @@
 galaxy_info:
   author: Ian Copp
-  description: Generate a local SSH key if necessary, add it to your Github account, and add your SSH keys from Github as known keys.
+  description: Add your local SSH key to your Github account, and add your SSH keys from Github as known keys.
   license: MIT
   min_ansible_version: 1.2
   platforms:
@@ -19,4 +19,6 @@ galaxy_info:
   galaxy_tags:
     - system
 
-dependencies: []
+dependencies:
+  - role: icopp.configure-ssh-key
+    when: github_username != "" and github_api_token != ""

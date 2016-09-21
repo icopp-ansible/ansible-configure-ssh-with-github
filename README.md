@@ -1,10 +1,14 @@
 # ansible-configure-ssh-with-github
 
-Generate a local SSH key if necessary, add it to your Github account, and add your SSH keys from Github as known keys.
+Add your local SSH key to your Github account, and add your SSH keys from Github as known keys.
 
 ## Role Variables
 
 `github_username` and `github_api_token` must be supplied or all tasks will be skipped.
+
+## Dependencies
+
+* [icopp.configure-ssh-key](https://github.com/icopp/ansible-configure-ssh-key)
 
 ## Example Playbook
 
